@@ -9,4 +9,4 @@ Tech stack
 
 # License
 
-Project is licensed under MIT.
+Project is licensed under [MIT](https://github.com/haxpor/nodejs-api-example/blob/master/LICENSE).
