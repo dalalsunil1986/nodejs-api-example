@@ -1,0 +1,27 @@
+{
+  "name": "test-nodejs-api",
+  "version": "1.0.0",
+  "description": "Example of API creation using NodeJS",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "sqlite-json": "^1.0.1",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haxpor/nodejs-api-example.git"
+  },
+  "author": "Wasin Thonkaew",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haxpor/nodejs-api-example/issues"
+  },
+  "homepage": "https://github.com/haxpor/nodejs-api-example#readme",
+  "private": true
+}
