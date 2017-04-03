@@ -33,6 +33,10 @@ Supported end-point is as follows
    | password | varchar(20) | YES |  
    | profession | varchar(20) | NO |
 
+* `/:id`  
+   `GET` method  
+   Get detail of specific user from `:id`.
+
 # How to Use
 
 1. Start server instance (`index.js` of this project) by executing `node index.js`.

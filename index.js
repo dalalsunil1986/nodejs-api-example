@@ -10,9 +10,11 @@ const exporter = sqliteJson(db);
 const prefix = "/test-nodejs-api";
 
 app.get(prefix + '/listUsers', function(req, res) {
-	exporter.json('select * from users', function(err, json) {
-		console.log(json);
-		res.end(json);
+	exporter.json('SELECT * FROM users', function(err, json) {
+		let jsonp = JSON.parse(json);
+		let retObj = jsonp;
+		console.log(retObj);
+		res.end(JSON.stringify({result: retObj}));
 	});
 });
 
@@ -79,6 +81,38 @@ app.get(prefix + '/:id', function(req, res) {
 				console.log("Successfully retrieved user id with id=" + id);
 				var retObj = { result: jsonp[0] };
 				res.end(JSON.stringify(retObj));	
+			}
+		}
+	});
+});
+
+app.post(prefix + '/deleteUser', function(req, res) {
+	// retrieve post parameter
+	var id = req.body.id;
+
+	if (id == null) {
+		console.log("id cannot be null in /deleteUser");
+		var retObj = { result: "id cannot be null" };
+		res.end(JSON.stringify(retObj));
+		return; 
+	}
+
+	db.run("DELETE FROM users WHERE id=" + id, function(err) {
+		if (err != null) {
+			console.log("There is error in /deleteUser for id=" + id);
+			var retObj = { result: "There is error " + err };
+			res.end(JSON.stringify(retObj));
+		}
+		else {
+			if (this.changes <= 0) {
+				console.log("Target id not found");
+				var retObj = { result: "Target id=" + id + " not found" };
+				res.end(JSON.stringify(retObj));
+			}
+			else {
+				console.log("Successfully delete user with id=" + id);
+				var retObj = { result: "Successfully delete user with id=" + id };
+				res.end(JSON.stringify(retObj));
 			}
 		}
 	});
