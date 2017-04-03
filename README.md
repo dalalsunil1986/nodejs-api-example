@@ -23,7 +23,7 @@ Supported end-point is as follows
    `GET` method  
    Get list of users.
 
-* `/addUser`
+* `/addUser`  
    `POST` method  
    Add a new user with following parameters spec  
 
