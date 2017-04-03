@@ -26,6 +26,7 @@ Supported end-point is as follows
 * `/addUser`
    `POST` method  
    Add a new user with following parameters spec  
+
    | Param Name | Type | Required |  
    |:---:|:---:|:---:|
    | name | varchar(20) | YES |  
