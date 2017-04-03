@@ -33,6 +33,13 @@ Supported end-point is as follows
    | password | varchar(20) | YES |  
    | profession | varchar(20) | NO |
 
+# How to Use
+
+1. Start server instance (`index.js` of this project) by executing `node index.js`.
+2. Make a client request from either [Postman](https://www.getpostman.com/apps), cURL, or Javascript code.
+
+Please note that you need to know your API URL (server instance that is listening) which depends on your setup.
+
 # Credits
 
 * Good starting point to follow to build up database structure, and overview approach using NodeJS API [https://www.tutorialspoint.com/nodejs/nodejs_restful_api.htm](https://www.tutorialspoint.com/nodejs/nodejs_restful_api.htm)
