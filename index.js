@@ -17,7 +17,15 @@ app.get(prefix + '/listUsers', function(req, res) {
 });
 
 app.post(prefix + '/addUser', function(req, res) {
-	// receive post parameters 
+	// receive post parameters
+	var id = req.body.id;
+	var name = req.body.name;
+	var password = req.body.password;
+	var profession = req.body.profession;
+
+	if (id == null) {
+		res.end("/addUser, id cannot be null
+	}
 });
 
 var server = app.listen(9601, '127.0.0.1', function() {

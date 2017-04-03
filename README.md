@@ -10,10 +10,9 @@ Tech stack
 # Schema of `users` table inside `database.db`
 
 The table is created with the following command.  
-Note that `id` is not `AUTOINCREMENT`.
 
 ```
-CREATE TABLE users (id int PRIMARY KEY NOT NULL, name varchar(20), password varchar(20), profession varchar(20));
+CREATE TABLE users (id integer PRIMARY KEY AUTOINCREMENT, name varchar(20) NOT NULL, password varchar(20) NOT NULL, profession varchar(20));
 ```
 
 # Support API end-point
