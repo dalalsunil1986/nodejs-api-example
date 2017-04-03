@@ -30,12 +30,12 @@ app.post(prefix + '/addUser', function(req, res) {
 
 	if (name == null) {
 		console.log("User didn't supply name in /addUser");
-		res.end(JSON.stringify({response:"name cannot be null"}));
+		res.end(JSON.stringify({result:"name cannot be null"}));
 		return;
 	}
 	if (password == null) {
 		console.log("User didn't supply password in /addUser");
-		res.end(JSON.stringify({response: "password cannot be null"}));
+		res.end(JSON.stringify({result: "password cannot be null"}));
 		return;
 	}
 	
@@ -44,12 +44,12 @@ app.post(prefix + '/addUser', function(req, res) {
 		db.run("INSERT INTO users (name, password, profession) VALUES (?,?,?);", [name, password, profession], function(err) {
 			if (err != null) {
 				console.log("There is error in /addUser " + err);
-				var retObj = { response: "There is error " + err };
+				var retObj = { result: "There is error " + err };
 				res.end(JSON.stringify(retObj));
 			}
 			else {
 				console.log("Successfuly inserted a new user in /addUser");
-				var retObj = { response: "Successfully inserted a new user" };
+				var retObj = { result: "Successfully inserted a new user" };
 				res.end(JSON.stringify(retObj));
 			}
 		});
@@ -63,13 +63,23 @@ app.get(prefix + '/:id', function(req, res) {
 	exporter.json('SELECT * FROM users WHERE id=' + id, function(err, json) {
 		if (err != null) {
 			console.log("There is error in /" + id + " " + err);
-			var retObj = { response: "There is error " + err };
+			var retObj = { result: "There is error " + err };
 			res.end(JSON.stringify(retObj));
 		}
 		else {
-			console.log("Successfully retrieved user id with id=" + id);
-			var retObj = { response: json };
-			res.end(JSON.stringify(retObj));
+			// parse json string to object
+			let jsonp = JSON.parse(json);
+
+			if (jsonp.length == 0) {
+				console.log("/" + id + " has empty result");
+				var retObj = { result: {} };
+				res.end(JSON.stringify(retObj));
+			}
+			else {
+				console.log("Successfully retrieved user id with id=" + id);
+				var retObj = { result: jsonp[0] };
+				res.end(JSON.stringify(retObj));	
+			}
 		}
 	});
 });
