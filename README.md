@@ -37,6 +37,10 @@ Supported end-point is as follows
    `GET` method  
    Get detail of specific user from `:id`.
 
+* `/deleteUser`  
+   `POST` method  
+   Delete a user from id.
+
 # How to Use
 
 1. Start server instance (`index.js` of this project) by executing `node index.js`.
