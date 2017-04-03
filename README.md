@@ -23,6 +23,15 @@ Supported end-point is as follows
    `GET` method  
    Get list of users.
 
+* `/addUser`
+   `POST` method  
+   Add a new user with following parameters spec  
+   | Param Name | Type | Required |  
+   |:---:|:---:|:---:|
+   | name | varchar(20) | YES |  
+   | password | varchar(20) | YES |  
+   | profession | varchar(20) | NO |
+
 # Credits
 
 * Good starting point to follow to build up database structure, and overview approach using NodeJS API [https://www.tutorialspoint.com/nodejs/nodejs_restful_api.htm](https://www.tutorialspoint.com/nodejs/nodejs_restful_api.htm)
