@@ -56,6 +56,24 @@ app.post(prefix + '/addUser', function(req, res) {
 	});
 });
 
+app.get(prefix + '/:id', function(req, res) {
+	// retriece get parameter
+	var id = req.params.id;
+
+	exporter.json('SELECT * FROM users WHERE id=' + id, function(err, json) {
+		if (err != null) {
+			console.log("There is error in /" + id + " " + err);
+			var retObj = { response: "There is error " + err };
+			res.end(JSON.stringify(retObj));
+		}
+		else {
+			console.log("Successfully retrieved user id with id=" + id);
+			var retObj = { response: json };
+			res.end(JSON.stringify(retObj));
+		}
+	});
+});
+
 var server = app.listen(9601, '127.0.0.1', function() {
 	var host = server.address().address;
 	var port = server.address().port;
